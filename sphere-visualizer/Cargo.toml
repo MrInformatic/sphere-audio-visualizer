@@ -1,0 +1,44 @@
+[package]
+name = "sphere-visualizer"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.bench]
+debug = true
+
+[features]
+web = ["wgpu/webgl"]
+
+[dependencies]
+sphere-visualizer-core = { path = "../sphere-visualizer-core" }
+rapier3d = "0.11.1"
+rapier2d = "0.11.1"
+rand = "0.8.5"
+nalgebra-glm = "0.15.0"
+wgpu = { version = "0.12.0", features = ["spirv"] }
+raw-window-handle = "0.4.2"
+thiserror = "1.0.30"
+pollster = "0.2.5"
+arrayvec = "0.7.2"
+rayon = "1.5.1"
+egui = "0.17.0"
+egui_wgpu_backend = "0.17.0"
+winit = "0.26.1"
+egui-winit = "0.17.0"
+
+[dev-dependencies]
+criterion = "0.3.5"
+pprof = { version = "0.6.2", features = ["criterion", "flamegraph"] }
+
+[build-dependencies]
+spirv-builder = { git = "https://github.com/EmbarkStudios/rust-gpu" }
+
+[[bench]]
+name = "spectrum"
+harness = false
+
+[[bench]]
+name = "simulation"
+harness = false

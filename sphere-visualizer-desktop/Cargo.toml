@@ -1,0 +1,20 @@
+[package]
+name = "sphere-visualizer-desktop"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sphere-visualizer = { path = "../sphere-visualizer" }
+winit = "0.26.1"
+egui = "0.17.0"
+gstreamer = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs.git" }
+gstreamer-app = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs.git" }
+gstreamer-audio = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs.git" }
+gstreamer-pbutils = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs.git" }
+gstreamer-video = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs.git" }
+rfd = "0.10.0"
+serde = "1.0.150"
+serde_yaml = "0.9.14"
+lazy_static = "1.4.0"

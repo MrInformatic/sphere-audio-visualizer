@@ -1,0 +1,22 @@
+[package]
+name = "sphere-visualizer-core"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+array-init = "2.0.0"
+
+[dependencies.arrayvec]
+default-features = false
+version = "0.7.2"
+
+[dependencies.glam]
+default-features = false
+features = ["libm", "scalar-math"]
+version = "0.22.0"
+
+[dependencies.num-traits]
+default-features = false
+version = "0.2.15"

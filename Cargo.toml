@@ -1,0 +1,25 @@
+[workspace]
+
+members = [
+    "sphere-visualizer",
+    "sphere-visualizer-core",
+    "sphere-visualizer-desktop",
+    "sphere-visualizer-spirv",
+]
+
+resolver = "2"
+
+[workspace.package]
+description = "A cross-platform audio visualizer based on gpu accellerated visualizations"
+authors = ["Philipp Haustein <MrInformatic>"]
+version = "1.0.0"
+license = "MIT"
+license-file = "LICENSE.md"
+readme = "README.md"
+repository = "https://github.com/MrInformatic/sphere-audio-visualizer"
+
+[profile.bench]
+debug = true
+
+[profile.release.build-override]
+opt-level = 3

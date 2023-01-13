@@ -1,0 +1,88 @@
+sample_rates:
+  - 8000
+  - 11025
+  - 16000
+  - 22050
+  - 32000
+  - 44100
+  - 48000
+  - 88200
+  - 96000
+  - 176400
+  - 192000
+  - 352800
+  - 384000
+default_sample_rate: 5
+frame_rates:
+  - 120
+  - 60
+  - 50
+  - 30
+  - 25
+  - 24
+default_frame_rate: 1
+resulutions:
+  - width: 3840
+    height: 2160
+  - width: 2560
+    height: 1440
+  - width: 1920
+    height: 1080
+  - width: 1280
+    height: 720
+  - width: 1600
+    height: 1200
+  - width: 1280
+    height: 960
+  - width: 800
+    height: 600
+  - width: 640
+    height: 480
+default_resulution: 2
+encodings:
+  - name: "H.264 + MP3 (MP4)"
+    container_caps: "video/quicktime,variant=iso"
+    video_caps: "video/x-h264"
+    audio_caps: "audio/mpeg,mpegversion=1,layer=3"
+    extension: "mp4"
+  - name: "H.265 + MP3 (MP4)"
+    container_caps: "video/quicktime,variant=iso"
+    video_caps: "video/x-h265"
+    audio_caps: "audio/mpeg,mpegversion=1,layer=3"
+    extension: "mp4"
+  - name: "VP9 + MP3 (MP4)"
+    container_caps: "video/quicktime,variant=iso"
+    video_caps: "video/x-vp9"
+    audio_caps: "audio/mpeg,mpegversion=1,layer=3"
+    extension: "mp4"
+  - name: "AV1 + MP3 (MP4)"
+    container_caps: "video/quicktime,variant=iso"
+    video_caps: "video/x-av1"
+    audio_caps: "audio/mpeg,mpegversion=1,layer=3"
+    extension: "mp4"
+  - name: "VP8 + Vorbis (mka)"
+    container_caps: "video/matroska"
+    video_caps: "video/x-vp8"
+    audio_caps: "audio/vorbis"
+    extension: "mka"
+  - name: "VP9 + Vorbis (mka)"
+    container_caps: "video/matroska"
+    video_caps: "video/x-vp9"
+    audio_caps: "audio/vorbis"
+    extension: "mka"
+  - name: "AV1 + Vorbis (mka)"
+    container_caps: "video/matroska"
+    video_caps: "video/x-av1"
+    audio_caps: "audio/vorbis"
+    extension: "mka"
+  - name: "Theora + Vorbis (OGG)"
+    container_caps: "application/ogg"
+    video_caps: "video/x-theora"
+    audio_caps: "audio/x-vorbis"
+    extension: "ogg"
+  - name: "VP8 + Vorbis (OGG)"
+    container_caps: "application/ogg"
+    video_caps: "video/x-vp8"
+    audio_caps: "audio/x-vorbis"
+    extension: "ogg"
+default_encoding: 0
