@@ -13,8 +13,11 @@ The Sphere Audio Visualizer is a cross-platform audio visualizer based on GPU-ac
 
 ### Prerequisites
 
-Please go to [rustup.rs](https://rustup.rs/) and follow the 
+Please go to the following websites and follow the 
 instructions. It will be quick and painless (hopefully).
+
+- <https://rustup.rs/>
+- <https://gstreamer.freedesktop.org/download/> 
 
 ### Build
 
@@ -23,6 +26,8 @@ repository, you can go ahead and open a terminal in the project
 folder and run: 
 
 ```
+cd sphere-visualizer-desktop/
+
 cargo run --release
 ```
 
