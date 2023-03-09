@@ -61,7 +61,7 @@ jobs:
         with:
           command: test
           args: --release --verbose --target ${{ matrix.target }}
-        if: runner.os != "macOS"
+        if: runner.os != 'macOS'
       
       - name: Package
         run: | 
