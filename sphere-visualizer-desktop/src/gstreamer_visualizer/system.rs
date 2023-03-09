@@ -27,7 +27,7 @@ impl SystemSampleSource {
 
         device_monitor.add_filter(Some("Audio/Source"), None);
 
-        let device = device_monitor.devices().next();
+        let device = device_monitor.devices().pop_front();
 
         let sample_rate_id = settings.default_sample_rate;
 

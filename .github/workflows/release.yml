@@ -1,0 +1,83 @@
+name: release
+
+on:
+  push:
+    tags: 
+      - '*'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.host }}
+
+    strategy:
+      matrix:
+        include:
+          - target: x86_64-pc-windows-msvc
+            script: windows.ps1
+            host: windows-latest
+            archive: windows_x86_64
+            exe: sphere-visualizer-desktop.exe 
+          - target: x86_64-unknown-linux-gnu
+            script: linux.sh
+            host: ubuntu-latest
+            archive: linux_x86_64
+            exe: sphere-visualizer-desktop
+          - target: x86_64-apple-darwin
+            script: mac.sh
+            host: macos-latest
+            archive: macos_x86_64
+            exe: sphere-visualizer-desktop
+
+    env:
+      GST_VERSION: "1.22.0"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Pre-Build
+        run: ./scripts/pre-build/${{ matrix.script }}
+  
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ~/.rustup/toolchains/
+            target
+          key: ${{ matrix.target }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Install Target
+        run: rustup target add ${{ matrix.target }}
+
+      - name: Build
+        uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --verbose --target ${{ matrix.target }}
+
+      - name: Test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+          args: --release --verbose --target ${{ matrix.target }}
+        if: runner.os != "macOS"
+      
+      - name: Package
+        run: | 
+          mkdir ${{ matrix.archive }}
+          cp target/${{ matrix.target }}/release/${{ matrix.exe }} ${{ matrix.archive }}/
+          cp README.md ${{ matrix.archive }}/
+          cp LICENSE.md ${{ matrix.archive }}/
+          cp sphere-visualizer-desktop/settings.yaml ${{ matrix.archive }}/
+          zip ${{ matrix.archive }}/ ${{ matrix.archive }}.zip
+      
+      - name: Release
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: ${{ matrix.archive }}.zip
+          tags: true
+          draft: true
+          overwrite: true

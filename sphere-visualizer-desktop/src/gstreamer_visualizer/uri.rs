@@ -486,8 +486,8 @@ impl URIExport {
 
         let container_profile = EncodingContainerProfile::builder(&container_caps)
             .name("container")
-            .add_profile(&(video_profile))
-            .add_profile(&(audio_profile))
+            .add_profile(video_profile)
+            .add_profile(audio_profile)
             .build();
 
         let encode_bin = ElementFactory::make("encodebin").build().unwrap();

@@ -15,6 +15,6 @@ gstreamer-audio = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs
 gstreamer-pbutils = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs.git" }
 gstreamer-video = { git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs.git" }
 rfd = "0.10.0"
-serde = "1.0.150"
+serde = { version = "1.0.150", features = ["derive"] }
 serde_yaml = "0.9.14"
 lazy_static = "1.4.0"
