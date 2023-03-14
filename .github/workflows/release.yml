@@ -31,6 +31,10 @@ jobs:
     env:
       GST_VERSION: "1.22.0"
 
+    permissions:
+      actions: write
+      contents: write
+
     steps:
       - uses: actions/checkout@v2
 
@@ -61,7 +65,7 @@ jobs:
         with:
           command: test
           args: --release --verbose --target ${{ matrix.target }}
-        if: runner.os != "macOS"
+        if: runner.os != 'macOS'
       
       - name: Package
         run: | 
@@ -70,7 +74,11 @@ jobs:
           cp README.md ${{ matrix.archive }}/
           cp LICENSE.md ${{ matrix.archive }}/
           cp sphere-visualizer-desktop/settings.yaml ${{ matrix.archive }}/
-          zip ${{ matrix.archive }}/ ${{ matrix.archive }}.zip
+
+      - uses: vimtor/action-zip@v1
+        with:
+          files: ${{ matrix.archive }}/
+          dest: ${{ matrix.archive }}.zip
       
       - name: Release
         uses: xresloader/upload-to-github-release@v1
