@@ -13,17 +13,14 @@ jobs:
       matrix:
         include:
           - target: x86_64-pc-windows-msvc
-            script: windows.ps1
             host: windows-latest
             archive: windows_x86_64
             exe: sphere-visualizer-desktop.exe 
           - target: x86_64-unknown-linux-gnu
-            script: linux.sh
             host: ubuntu-latest
             archive: linux_x86_64
             exe: sphere-visualizer-desktop
           - target: x86_64-apple-darwin
-            script: mac.sh
             host: macos-latest
             archive: macos_x86_64
             exe: sphere-visualizer-desktop
@@ -38,8 +35,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Pre-Build
-        run: ./scripts/pre-build/${{ matrix.script }}
+      - name: Install GStreamer
+        uses: MrInformatic/install-gstreamer-action
   
       - name: Cache
         uses: actions/cache@v2
