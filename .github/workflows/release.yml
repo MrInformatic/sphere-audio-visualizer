@@ -13,20 +13,20 @@ jobs:
       matrix:
         include:
           - target: x86_64-pc-windows-msvc
+            gstreamer-arch: x86_64
             host: windows-latest
             archive: windows_x86_64
             exe: sphere-visualizer-desktop.exe 
           - target: x86_64-unknown-linux-gnu
+            gstreamer-arch: amd64
             host: ubuntu-latest
             archive: linux_x86_64
             exe: sphere-visualizer-desktop
           - target: x86_64-apple-darwin
+            gstreamer-arch: universal
             host: macos-latest
             archive: macos_x86_64
             exe: sphere-visualizer-desktop
-
-    env:
-      GST_VERSION: "1.22.0"
 
     permissions:
       actions: write
@@ -36,7 +36,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install GStreamer
-        uses: MrInformatic/install-gstreamer-action
+        uses: MrInformatic/install-gstreamer-action@v1.0.0
+        with:
+          arch: ${{ matrix.gstreamer-arch }}
+          version: "1.22.0"
   
       - name: Cache
         uses: actions/cache@v2
