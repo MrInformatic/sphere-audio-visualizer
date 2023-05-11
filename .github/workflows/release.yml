@@ -16,17 +16,20 @@ jobs:
             gstreamer-arch: x86_64
             host: windows-latest
             archive: windows_x86_64
-            exe: sphere-visualizer-desktop.exe 
+            exe: sphere-audio-visualizer-desktop.exe 
+            itch-channel: windows
           - target: x86_64-unknown-linux-gnu
             gstreamer-arch: amd64
             host: ubuntu-latest
             archive: linux_x86_64
-            exe: sphere-visualizer-desktop
+            exe: sphere-audio-visualizer-desktop
+            itch-channel: linux
           - target: x86_64-apple-darwin
             gstreamer-arch: universal
             host: macos-latest
             archive: macos_x86_64
-            exe: sphere-visualizer-desktop
+            exe: sphere-audio-visualizer-desktop
+            itch-channel: mac
 
     permissions:
       actions: write
@@ -73,7 +76,7 @@ jobs:
           cp target/${{ matrix.target }}/release/${{ matrix.exe }} ${{ matrix.archive }}/
           cp README.md ${{ matrix.archive }}/
           cp LICENSE.md ${{ matrix.archive }}/
-          cp sphere-visualizer-desktop/settings.yaml ${{ matrix.archive }}/
+          cp settings.yaml ${{ matrix.archive }}/
 
       - uses: vimtor/action-zip@v1
         with:
@@ -89,3 +92,12 @@ jobs:
           tags: true
           draft: true
           overwrite: true
+        
+      - uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ matrix.itch-channel }}
+          ITCH_GAME: sphere-audio-visualizer
+          ITCH_USER: mrinformatic
+          PACKAGE: ${{ matrix.archive }}
+          VERSION: ${{ github.ref_name }}

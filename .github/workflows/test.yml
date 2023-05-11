@@ -14,8 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Pre-Build
-        run: ./scripts/pre-build/linux.sh
+      - name: Install GStreamer
+        uses: MrInformatic/install-gstreamer-action@v1.0.0
+        with:
+          arch: amd64
+          version: "1.22.0"
       
       - name: Cache
         uses: actions/cache@v2

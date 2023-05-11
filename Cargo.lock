@@ -3077,7 +3077,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "sphere-visualizer"
+name = "sphere-audio-visualizer"
 version = "1.0.0"
 dependencies = [
  "arrayvec",
@@ -3093,7 +3093,7 @@ dependencies = [
  "rapier3d",
  "raw-window-handle 0.4.3",
  "rayon",
- "sphere-visualizer-core",
+ "sphere-audio-visualizer-core",
  "spirv-builder",
  "thiserror",
  "wgpu",
@@ -3101,7 +3101,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "sphere-visualizer-core"
+name = "sphere-audio-visualizer-core"
 version = "1.0.0"
 dependencies = [
  "array-init",
@@ -3111,7 +3111,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "sphere-visualizer-desktop"
+name = "sphere-audio-visualizer-desktop"
 version = "1.0.0"
 dependencies = [
  "egui",
@@ -3124,15 +3124,15 @@ dependencies = [
  "rfd",
  "serde",
  "serde_yaml",
- "sphere-visualizer",
+ "sphere-audio-visualizer",
  "winit",
 ]
 
 [[package]]
-name = "sphere-visualizer-spirv"
+name = "sphere-audio-visualizer-spirv"
 version = "1.0.0"
 dependencies = [
- "sphere-visualizer-core",
+ "sphere-audio-visualizer-core",
  "spirv-std",
 ]
 

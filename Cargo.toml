@@ -1,10 +1,10 @@
 [workspace]
 
 members = [
-    "sphere-visualizer",
-    "sphere-visualizer-core",
-    "sphere-visualizer-desktop",
-    "sphere-visualizer-spirv",
+    "sphere-audio-visualizer",
+    "sphere-audio-visualizer-core",
+    "sphere-audio-visualizer-desktop",
+    "sphere-audio-visualizer-spirv",
 ]
 
 resolver = "2"

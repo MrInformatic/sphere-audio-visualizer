@@ -1,0 +1,16 @@
+[package]
+name = "sphere-audio-visualizer-spirv"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["lib", "dylib"]
+
+[dependencies]
+sphere-audio-visualizer-core = { path = "../sphere-audio-visualizer-core" }
+
+[dependencies.spirv-std]
+git = "https://github.com/EmbarkStudios/rust-gpu"
+features = ["glam"]

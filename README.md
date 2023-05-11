@@ -26,7 +26,7 @@ repository, you can go ahead and open a terminal in the project
 folder and run: 
 
 ```
-cd sphere-visualizer-desktop/
+cd sphere-audio-visualizer-desktop/
 
 cargo run --release
 ```
