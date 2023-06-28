@@ -26,9 +26,7 @@ repository, you can go ahead and open a terminal in the project
 folder and run: 
 
 ```
-cd sphere-audio-visualizer-desktop/
-
-cargo run --release
+cargo run --bin sphere-audio-visualizer-desktop --release
 ```
 
 If you have a problem running the appropriate Command on the operating system 
